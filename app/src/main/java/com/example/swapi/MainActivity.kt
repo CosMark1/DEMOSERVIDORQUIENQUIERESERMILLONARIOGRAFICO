@@ -62,41 +62,42 @@ class MainActivity : AppCompatActivity() {
                         binding.r4.text = question.respuesta4
 
                     }
+                    fun reiniciar(){
+                        binding.comprobar.visibility = View.VISIBLE
+                        binding.r1.setBackgroundColor(ContextCompat.getColor(binding.root.context,R.color.purple_700))
+                        binding.r1.setTextColor(ContextCompat.getColor(binding.root.context,R.color.white))
+                        binding.r2.setBackgroundColor(ContextCompat.getColor(binding.root.context,R.color.purple_700))
+                        binding.r2.setTextColor(ContextCompat.getColor(binding.root.context,R.color.white))
+                        binding.r3.setBackgroundColor(ContextCompat.getColor(binding.root.context,R.color.purple_700))
+                        binding.r3.setTextColor(ContextCompat.getColor(binding.root.context,R.color.white))
+                        binding.r4.setBackgroundColor(ContextCompat.getColor(binding.root.context,R.color.purple_700))
+                        binding.r4.setTextColor(ContextCompat.getColor(binding.root.context,R.color.white))
+                    }
+                    binding.r1.setOnClickListener{
+                        request.url("http://10.0.2.2:8081/Pregunta${question.id}/${answer.respuesta}")
+                        reiniciar()
+                        binding.r1.setBackgroundColor(ContextCompat.getColor(binding.root.context,R.color.teal_700))
+                        binding.r1.setTextColor(ContextCompat.getColor(binding.root.context,R.color.black))
+                    }
+                    binding.r1.setOnClickListener{
+                        reiniciar()
+                        binding.r2.setBackgroundColor(ContextCompat.getColor(binding.root.context,R.color.teal_700))
+                        binding.r2.setTextColor(ContextCompat.getColor(binding.root.context,R.color.black))
+                    }
+                    binding.r1.setOnClickListener{
+                        reiniciar()
+                        binding.r3.setBackgroundColor(ContextCompat.getColor(binding.root.context,R.color.teal_700))
+                        binding.r3.setTextColor(ContextCompat.getColor(binding.root.context,R.color.black))
+                    }
+                    binding.r1.setOnClickListener{
+                        reiniciar()
+                        binding.r4.setBackgroundColor(ContextCompat.getColor(binding.root.context,R.color.teal_700))
+                        binding.r4.setTextColor(ContextCompat.getColor(binding.root.context,R.color.black))
+                    }
                 }
             }
         })
-        fun reiniciar(){
-            binding.comprobar.visibility = View.VISIBLE
-            binding.r1.setBackgroundColor(ContextCompat.getColor(binding.root.context,R.color.purple_700))
-            binding.r1.setTextColor(ContextCompat.getColor(binding.root.context,R.color.white))
-            binding.r2.setBackgroundColor(ContextCompat.getColor(binding.root.context,R.color.purple_700))
-            binding.r2.setTextColor(ContextCompat.getColor(binding.root.context,R.color.white))
-            binding.r3.setBackgroundColor(ContextCompat.getColor(binding.root.context,R.color.purple_700))
-            binding.r3.setTextColor(ContextCompat.getColor(binding.root.context,R.color.white))
-            binding.r4.setBackgroundColor(ContextCompat.getColor(binding.root.context,R.color.purple_700))
-            binding.r4.setTextColor(ContextCompat.getColor(binding.root.context,R.color.white))
-        }
-        binding.r1.setOnClickListener{
-            request.url("http://10.0.2.2:8081/Pregunta${}/${}")
-            reiniciar()
-            binding.r1.setBackgroundColor(ContextCompat.getColor(binding.root.context,R.color.teal_700))
-            binding.r1.setTextColor(ContextCompat.getColor(binding.root.context,R.color.black))
-        }
-        binding.r1.setOnClickListener{
-            reiniciar()
-            binding.r2.setBackgroundColor(ContextCompat.getColor(binding.root.context,R.color.teal_700))
-            binding.r2.setTextColor(ContextCompat.getColor(binding.root.context,R.color.black))
-        }
-        binding.r1.setOnClickListener{
-            reiniciar()
-            binding.r3.setBackgroundColor(ContextCompat.getColor(binding.root.context,R.color.teal_700))
-            binding.r3.setTextColor(ContextCompat.getColor(binding.root.context,R.color.black))
-        }
-        binding.r1.setOnClickListener{
-            reiniciar()
-            binding.r4.setBackgroundColor(ContextCompat.getColor(binding.root.context,R.color.teal_700))
-            binding.r4.setTextColor(ContextCompat.getColor(binding.root.context,R.color.black))
-        }
+
 
     }
 }
