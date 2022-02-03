@@ -28,6 +28,8 @@ class MainActivity : AppCompatActivity() {
 
         val client = OkHttpClient()
 
+        val id = 1
+        val respuestas = ""
         val request = Request.Builder()
         request.url("http://10.0.2.2:8081/Pregunta")
 
