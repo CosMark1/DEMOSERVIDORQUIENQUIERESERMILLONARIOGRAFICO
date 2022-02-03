@@ -6,7 +6,7 @@ import kotlinx.serialization.SerialName
 
 @Parcelize
 data class Preguntas (
-    var Npregunta :String,
+    var id :Int,
     var pregunta :String,
     var respuesta1:String,
     var respuesta2:String,

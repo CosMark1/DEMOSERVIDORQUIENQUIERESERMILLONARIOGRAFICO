@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity() {
             binding.r4.setTextColor(ContextCompat.getColor(binding.root.context,R.color.white))
         }
         binding.r1.setOnClickListener{
-            request.url("http://10.0.2.2:8081/${Preguntas.id}/${respuesta}")
+            request.url("http://10.0.2.2:8081/Pregunta${}/${}")
             reiniciar()
             binding.r1.setBackgroundColor(ContextCompat.getColor(binding.root.context,R.color.teal_700))
             binding.r1.setTextColor(ContextCompat.getColor(binding.root.context,R.color.black))
