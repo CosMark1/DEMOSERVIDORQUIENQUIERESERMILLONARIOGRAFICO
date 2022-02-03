@@ -2,7 +2,9 @@ package com.example.swapi
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.swapi.databinding.ActivityMainBinding
 import com.google.gson.Gson
@@ -16,20 +18,18 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityMainBinding
 
-    lateinit var adapter: TextoAdapter
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var listaPlanetas = mutableListOf<Planet>()
+
 
 
         val client = OkHttpClient()
 
         val request = Request.Builder()
-        request.url("https://swapi.dev/api/planets/")
+        request.url("http://10.0.2.2:8081/Pregunta")
 
 
         val call = client.newCall(request.build())
@@ -49,18 +49,51 @@ class MainActivity : AppCompatActivity() {
                     println(body)
                     val gson = Gson()
 
-                    val planet = gson.fromJson(body, PlanetResponse::class.java)
+                    val question = gson.fromJson(body, Preguntas::class.java)
+                    val answer = gson.fromJson(body, Respuestas::class.java)
 
                     CoroutineScope(Dispatchers.Main).launch {
-                        planet.results.forEach {
-                            listaPlanetas.add(it)
-                        }
-                        adapter = TextoAdapter(listaPlanetas)
-                        binding.recyclerview.layoutManager = LinearLayoutManager(this@MainActivity)
-                        binding.recyclerview.adapter = adapter
+                        binding.pregunta.text = question.pregunta
+                        binding.r1.text = question.respuesta1
+                        binding.r2.text = question.respuesta2
+                        binding.r3.text = question.respuesta3
+                        binding.r4.text = question.respuesta4
+
                     }
                 }
             }
         })
+        fun reiniciar(){
+            binding.comprobar.visibility = View.VISIBLE
+            binding.r1.setBackgroundColor(ContextCompat.getColor(binding.root.context,R.color.purple_700))
+            binding.r1.setTextColor(ContextCompat.getColor(binding.root.context,R.color.white))
+            binding.r2.setBackgroundColor(ContextCompat.getColor(binding.root.context,R.color.purple_700))
+            binding.r2.setTextColor(ContextCompat.getColor(binding.root.context,R.color.white))
+            binding.r3.setBackgroundColor(ContextCompat.getColor(binding.root.context,R.color.purple_700))
+            binding.r3.setTextColor(ContextCompat.getColor(binding.root.context,R.color.white))
+            binding.r4.setBackgroundColor(ContextCompat.getColor(binding.root.context,R.color.purple_700))
+            binding.r4.setTextColor(ContextCompat.getColor(binding.root.context,R.color.white))
+        }
+        binding.r1.setOnClickListener{
+            reiniciar()
+            binding.r1.setBackgroundColor(ContextCompat.getColor(binding.root.context,R.color.teal_700))
+            binding.r1.setTextColor(ContextCompat.getColor(binding.root.context,R.color.black))
+        }
+        binding.r1.setOnClickListener{
+            reiniciar()
+            binding.r2.setBackgroundColor(ContextCompat.getColor(binding.root.context,R.color.teal_700))
+            binding.r2.setTextColor(ContextCompat.getColor(binding.root.context,R.color.black))
+        }
+        binding.r1.setOnClickListener{
+            reiniciar()
+            binding.r3.setBackgroundColor(ContextCompat.getColor(binding.root.context,R.color.teal_700))
+            binding.r3.setTextColor(ContextCompat.getColor(binding.root.context,R.color.black))
+        }
+        binding.r1.setOnClickListener{
+            reiniciar()
+            binding.r4.setBackgroundColor(ContextCompat.getColor(binding.root.context,R.color.teal_700))
+            binding.r4.setTextColor(ContextCompat.getColor(binding.root.context,R.color.black))
+        }
+
     }
 }

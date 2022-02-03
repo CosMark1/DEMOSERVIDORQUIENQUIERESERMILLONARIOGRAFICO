@@ -8,10 +8,13 @@ import kotlinx.serialization.SerialName
 data class Preguntas (
     var Npregunta :String,
     var pregunta :String,
-    var respuestas:String
+    var respuesta1:String,
+    var respuesta2:String,
+    var respuesta3:String,
+    var respuesta4:String
 ) : Parcelable
 
 @Parcelize
 data class Respuestas (
     var respuesta :String
-    ): Parcelable
+): Parcelable
