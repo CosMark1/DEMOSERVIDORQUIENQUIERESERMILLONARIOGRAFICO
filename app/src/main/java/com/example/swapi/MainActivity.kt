@@ -128,7 +128,7 @@ class MainActivity : AppCompatActivity() {
             )
         )
     }
-    fun comprobar( respuesta :String){
+    fun comprobar( respuesta :String, ){
 
         reiniciar()
         val client = OkHttpClient()
@@ -136,7 +136,7 @@ class MainActivity : AppCompatActivity() {
         val id = 1
         val respuesta = ""
         val request = Request.Builder()
-        request.url("http://10.0.2.2:8081/Pregunta${question.id}/${question.respuesta1}")
+        request.url("http://10.0.2.2:8081/Pregunta${question.id}/${respuesta}")
 
 
         val call = client.newCall(request.build())
